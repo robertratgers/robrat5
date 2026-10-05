@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# VS Code / Visual Studio
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+
+# Built CSS (optional: include or ignore)
+# If you want to commit built CSS, remove this line
+# assets/gemini-built.css
