@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Art by Renee">
+  <rect width="64" height="64" rx="14" fill="#c0e8af"/>
+  <path fill="#ffe31c" stroke="#3d3a36" stroke-width="2.2" stroke-linejoin="round"
+    d="M32 50s-16-11-16-20.5C16 22 20.2 18 25 18c3.6 0 6.5 2.1 9 5.8C36.5 20.1 39.4 18 43 18c4.8 0 9 4 9 11.5C52 39 32 50 32 50z"/>
+</svg>

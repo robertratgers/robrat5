@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 96" role="img" aria-label="ArtbyRenee">
+  <rect width="256" height="96" fill="#f3faef"/>
+  <text x="128" y="48" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif"
+    font-size="36" font-weight="500" fill="#3d3a36">ArtbyRenee</text>
+  <path fill="#ffe31c" stroke="#3d3a36" stroke-width="1.8" stroke-linejoin="round"
+    d="M128 84s-14-9.5-14-17.2C114 61.2 117.2 58 121.2 58c2.9 0 5.2 1.7 6.8 4.2C129.6 59.7 131.9 58 134.8 58c4 0 7.2 3.2 7.2 8.8C142 74.5 128 84 128 84z"/>
+</svg>

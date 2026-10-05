@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ed">
+  <title>Kies je domeinnaam | Renee</title>
+  <meta name="description" content="Ontdek en kies de domeinnaam die het beste bij jouw kunst past.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f4ed;
+      --ink: #20231d;
+      --muted: #77796f;
+      --line: #deded3;
+      --white: #fffefa;
+      --orange: #e85432;
+      --green: #cde769;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background-color: var(--paper);
+      background-image: radial-gradient(#b8b9a9 0.55px, transparent 0.55px);
+      background-size: 18px 18px;
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select { font: inherit; }
+    button { color: inherit; }
+
+    .topbar {
+      height: 68px;
+      padding: 0 clamp(20px, 5vw, 76px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(32, 35, 29, .13);
+      background: rgba(245, 244, 237, .9);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .mark {
+      display: grid;
+      width: 29px;
+      height: 29px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-family: var(--serif);
+      font-size: 19px;
+      font-style: italic;
+    }
+
+    .top-note {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    main {
+      width: min(1040px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 60px 0 150px;
+    }
+
+    .intro {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto 42px;
+      text-align: center;
+      animation: arrive .55s ease-out both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 17px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before, .eyebrow::after {
+      width: 19px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(40px, 7vw, 68px);
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.08;
+    }
+
+    h1 em {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .intro p {
+      max-width: 460px;
+      margin: 15px auto 0;
+      color: #66695f;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .tools {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 23px;
+      animation: arrive .55s .08s ease-out both;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 420px;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      width: 17px;
+      height: 17px;
+      transform: translateY(-50%);
+      color: #77796f;
+      pointer-events: none;
+    }
+
+    .search {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 14px 0 42px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      outline: none;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .search:focus, .extension-filter:focus-visible {
+      border-color: var(--ink);
+      outline: 2px solid rgba(32, 35, 29, .12);
+      outline-offset: 2px;
+    }
+
+    .extension-filter {
+      min-height: 44px;
+      padding: 0 34px 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .results-count {
+      margin: 0 0 11px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      animation: arrive .55s .12s ease-out both;
+    }
+
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+    }
+
+    .extension-group {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      animation: arrive .45s ease-out both;
+    }
+
+    .group-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 42px;
+      padding: 0 14px;
+      border-bottom: 1px solid #ebeae2;
+      background: #fbfaf5;
+    }
+
+    .extension-name {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .domain-count {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .domain-list { padding: 4px 8px; }
+
+    .domain-option {
+      display: flex;
+      width: 100%;
+      min-height: 42px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 8px;
+      border: 0;
+      border-radius: 4px;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color .15s ease, color .15s ease;
+    }
+
+    .domain-option:hover { background: #f3f2e9; }
+
+    .domain-option[aria-pressed="true"] {
+      background: var(--green);
+      color: var(--ink);
+    }
+
+    .domain-name {
+      overflow-wrap: anywhere;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .choice-indicator {
+      display: grid;
+      width: 19px;
+      height: 19px;
+      flex: 0 0 19px;
+      place-items: center;
+      border: 1px solid #c6c7bb;
+      border-radius: 50%;
+      color: transparent;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .domain-option[aria-pressed="true"] .choice-indicator {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--green);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 38px 20px;
+      border: 1px dashed #bdbeb2;
+      border-radius: 6px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .selection-bar {
+      position: fixed;
+      z-index: 5;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      border-top: 1px solid rgba(32, 35, 29, .15);
+      background: rgba(255, 254, 250, .96);
+      backdrop-filter: blur(12px);
+      transform: translateY(110%);
+      transition: transform .25s ease;
+    }
+
+    .selection-bar.is-visible { transform: translateY(0); }
+
+    .selection-inner {
+      display: flex;
+      width: min(880px, 100%);
+      min-height: 48px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 auto;
+    }
+
+    .selection-copy { min-width: 0; }
+
+    .selection-label {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .selection-domain {
+      display: block;
+      overflow: hidden;
+      max-width: 100%;
+      font-size: 14px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .whatsapp-link {
+      display: inline-flex;
+      min-height: 45px;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 17px;
+      border-radius: 5px;
+      background: #247a4b;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color .15s ease, transform .15s ease;
+    }
+
+    .whatsapp-link:hover { background: #1b623b; transform: translateY(-1px); }
+    .whatsapp-link:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+    .whatsapp-link svg { width: 18px; height: 18px; }
+
+    .send-hint {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: right;
+    }
+
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(9px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 650px) {
+      .topbar { height: 58px; }
+      .top-note { font-size: 11px; }
+      main { padding-top: 43px; }
+      .intro { margin-bottom: 31px; }
+      .intro p { max-width: 370px; font-size: 14px; }
+      .domain-grid { grid-template-columns: 1fr; gap: 9px; }
+      .tools { align-items: stretch; }
+      .search-wrap { max-width: none; }
+      .extension-filter { width: 115px; }
+    }
+
+    @media (max-width: 390px) {
+      .topbar { padding-right: 16px; padding-left: 16px; }
+      main { width: calc(100% - 30px); }
+      .selection-bar { padding-right: 12px; padding-left: 12px; }
+      .selection-inner { gap: 8px; }
+      .whatsapp-link { gap: 6px; padding: 0 11px; font-size: 12px; }
+      .send-hint { font-size: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wordmark"><span class="mark" aria-hidden="true">R</span> Renee's domeinnaam</div>
+    <span class="top-note">Een naam voor jouw kunst</span>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="eyebrow">Jouw volgende stap</div>
+      <h1>Een naam die <em>blijft hangen.</em></h1>
+      <p>Van speels tot professioneel: bekijk de opties en kies de domeinnaam die als jouw kunst voelt.</p>
+    </section>
+
+    <section aria-label="Domeinnamen">
+      <div class="tools">
+        <label class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <input class="search" id="search" type="search" placeholder="Zoek een domeinnaam..." autocomplete="off" aria-label="Zoek een domeinnaam">
+        </label>
+        <label>
+          <span class="visually-hidden" hidden>Filter op extensie</span>
+          <select class="extension-filter" id="extension-filter" aria-label="Filter op extensie">
+            <option value="">Alle extensies</option>
+          </select>
+        </label>
+      </div>
+      <p class="results-count" id="results-count" aria-live="polite"></p>
+      <div class="domain-grid" id="domain-grid" aria-label="Beschikbare domeinnaamopties"></div>
+    </section>
+  </main>
+
+  <aside class="selection-bar" id="selection-bar" aria-label="Gekozen domeinnaam" aria-live="polite">
+    <div class="selection-inner">
+      <div class="selection-copy">
+        <span class="selection-label">Jouw keuze</span>
+        <span class="selection-domain" id="selection-domain"></span>
+      </div>
+      <div>
+        <a class="whatsapp-link" id="whatsapp-link" href="https://wa.me/?text=" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 11.8a8.6 8.6 0 0 1-12.7 7.5L3.5 20.5l1.2-4.1a8.6 8.6 0 1 1 15.8-4.6Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.2 8.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.4 0 .6.5.8 1.1 1.4 1.9 1.9.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.2.1.3.3.3.5 0 .4-.2 1.1-.6 1.4-.5.4-1.1.7-1.8.6-1-.1-2.4-.7-3.8-1.9-1.2-1.1-2.1-2.4-2.3-3.4-.2-.9.1-1.7.5-2.1.2-.2.4-.3.5-.3Z" fill="currentColor"/></svg>
+          App mijn keuze
+        </a>
+        <span class="send-hint">WhatsApp opent met je keuze ingevuld</span>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    const domains = [
+      "artbyreneedesigns.com",
+      "creativeartbyrenee.com",
+      "artbyrenees.com",
+      "myartbyrenee.com",
+      "designbyrenee.com",
+      "art-by-renees.com",
+      "artbyrenee.net",
+      "artbyrenee.org",
+      "artbyrenee.ai",
+      "artbyrenee.blog",
+      "artbyrenee.cloud",
+      "artbyrenee.co",
+      "realartbyrenee.co",
+      "art-by-renee.co",
+      "artbyrenee.fun",
+      "artbyrenee.io",
+      "artbyrenee.me",
+      "artbyrenee.online",
+      "artbyrenee.shop",
+      "artbyrenee.site",
+      "artbyrenee.store",
+      "artbyrenee.tech",
+      "artbyrenee.tv",
+      "artbyrenee.xyz",
+      "artbyrenee.music",
+      "artbyrenee.art",
+      "artbyrenee.us",
+      "artbyrenee.ca",
+      "artbyrenee.click"
+    ];
+
+    const grid = document.querySelector("#domain-grid");
+    const search = document.querySelector("#search");
+    const extensionFilter = document.querySelector("#extension-filter");
+    const resultsCount = document.querySelector("#results-count");
+    const selectionBar = document.querySelector("#selection-bar");
+    const selectionDomain = document.querySelector("#selection-domain");
+    const whatsappLink = document.querySelector("#whatsapp-link");
+    let selectedDomain = "";
+
+    const extensions = [...new Set(domains.map((domain) => domain.slice(domain.lastIndexOf("."))))]
+      .sort((first, second) => first.localeCompare(second, "nl"));
+
+    for (const extension of extensions) {
+      const option = document.createElement("option");
+      option.value = extension;
+      option.textContent = extension;
+      extensionFilter.append(option);
+    }
+
+    function renderDomains() {
+      const query = search.value.trim().toLowerCase();
+      const extension = extensionFilter.value;
+      const filteredDomains = domains.filter((domain) =>
+        domain.includes(query) && (!extension || domain.endsWith(extension))
+      );
+      const groups = new Map();
+
+      for (const domain of filteredDomains) {
+        const domainExtension = domain.slice(domain.lastIndexOf("."));
+        if (!groups.has(domainExtension)) groups.set(domainExtension, []);
+        groups.get(domainExtension).push(domain);
+      }
+
+      grid.replaceChildren();
+      resultsCount.textContent = `${filteredDomains.length} ${filteredDomains.length === 1 ? "domeinnaam" : "domeinnamen"}`;
+
+      if (filteredDomains.length === 0) {
+        const emptyState = document.createElement("p");
+        emptyState.className = "empty-state";
+        emptyState.textContent = "Geen domeinnamen gevonden. Probeer een andere zoekopdracht.";
+        grid.append(emptyState);
+        return;
+      }
+
+      for (const [domainExtension, groupDomains] of groups) {
+        const group = document.createElement("section");
+        group.className = "extension-group";
+        const heading = document.createElement("div");
+        heading.className = "group-heading";
+        const name = document.createElement("span");
+        name.className = "extension-name";
+        name.textContent = domainExtension;
+        const count = document.createElement("span");
+        count.className = "domain-count";
+        count.textContent = `${groupDomains.length} ${groupDomains.length === 1 ? "optie" : "opties"}`;
+        heading.append(name, count);
+
+        const list = document.createElement("div");
+        list.className = "domain-list";
+        for (const domain of groupDomains) {
+          const option = document.createElement("button");
+          option.className = "domain-option";
+          option.type = "button";
+          option.setAttribute("aria-pressed", String(domain === selectedDomain));
+          option.setAttribute("aria-label", `Kies ${domain}`);
+          const label = document.createElement("span");
+          label.className = "domain-name";
+          label.textContent = domain;
+          const indicator = document.createElement("span");
+          indicator.className = "choice-indicator";
+          indicator.setAttribute("aria-hidden", "true");
+          indicator.textContent = "✓";
+          option.append(label, indicator);
+          option.addEventListener("click", () => selectDomain(domain));
+          list.append(option);
+        }
+
+        group.append(heading, list);
+        grid.append(group);
+      }
+    }
+
+    function selectDomain(domain) {
+      selectedDomain = domain;
+      selectionDomain.textContent = domain;
+      selectionBar.classList.add("is-visible");
+      const message = `Hoi! Mijn favoriete domeinnaam is ${domain}.`;
+      whatsappLink.href = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      renderDomains();
+    }
+
+    search.addEventListener("input", renderDomains);
+    extensionFilter.addEventListener("change", renderDomains);
+    renderDomains();
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "artbyrenee-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "npx tailwindcss -c tailwind.config.js -i ./assets/gemini-code-1791214796172.css -o ./assets/gemini-built.css --minify",
+    "watch:css": "npx tailwindcss -c tailwind.config.js -i ./assets/gemini-code-1791214796172.css -o ./assets/gemini-built.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.7"
+  }
+}

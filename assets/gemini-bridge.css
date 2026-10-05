@@ -1,0 +1,25 @@
+:root{
+  /* Map Gemini theme values to site --abr- variables (light mode) */
+  --abr-bg: #ffffff; /* from gemini --background */
+  --abr-bg-soft: #f4f4f5; /* from gemini --secondary */
+  --abr-ink: #09090b; /* from gemini --foreground */
+  --abr-ink-soft: #71717a; /* from gemini --muted-foreground */
+  --abr-muted: #f4f4f5; /* from gemini --muted */
+  --abr-muted-soft: #a1a1aa; /* fallback */
+  --abr-border: #e4e4e7; /* from gemini --border */
+  --abr-card: #ffffff; /* from gemini --card */
+  --abr-wash: #ffffff; /* subtle wash */
+  --abr-yellow: #ffe31c; /* keep existing accent where used */
+  --abr-yellow-deep: #e5c400;
+}
+
+.dark{
+  /* Dark mode mappings from gemini dark variables */
+  --abr-bg: #09090b; /* gemini dark background */
+  --abr-bg-soft: #27272a; /* gemini dark secondary */
+  --abr-ink: #fafafa; /* gemini dark foreground */
+  --abr-ink-soft: #a1a1aa; /* gemini dark muted-foreground */
+  --abr-muted: #27272a;
+  --abr-border: #27272a;
+  --abr-card: #09090b;
+}
