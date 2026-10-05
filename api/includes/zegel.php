@@ -86,7 +86,7 @@ function abr_zegel_choices(): array
     foreach ($state['seals'] as $i => $seal) {
         $choices[] = [
             'token' => (string) $seal['token'],
-            'src' => 'api/zegel?i=' . $i . '&v=' . rawurlencode((string) $state['nonce']),
+            'src' => '/api/zegel?i=' . $i . '&v=' . rawurlencode((string) $state['nonce']),
         ];
     }
 

@@ -1,4 +1,4 @@
-# Node
+# Node (removed from project; keep ignore if re-added)
 node_modules/
 
 # VS Code / Visual Studio
@@ -16,6 +16,6 @@ Thumbs.db
 # Logs
 npm-debug.log*
 
-# Built CSS (optional: include or ignore)
-# If you want to commit built CSS, remove this line
-# assets/gemini-built.css
+# Local validation scratch
+_validate.html
+_validate-result.json

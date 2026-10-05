@@ -1,0 +1,174 @@
+/* Art by Renee — polish layer on top of the established ABR theme */
+
+.site-header {
+  background: color-mix(in oklab, var(--abr-bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--abr-border) 70%, transparent);
+  background: color-mix(in oklab, var(--abr-bg) 94%, transparent);
+}
+
+.menu-button.is-open span:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.menu-button.is-open span:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.mobile-menu[hidden] {
+  display: none !important;
+}
+
+.lightbox[hidden] {
+  display: none !important;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal.reveal-delay {
+  transition-delay: 0.12s;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(72vh, 720px);
+  background:
+    radial-gradient(ellipse 70% 55% at 85% 20%, color-mix(in oklab, var(--abr-pistache) 55%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 70%, color-mix(in oklab, var(--abr-yellow) 18%, transparent), transparent 65%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-main-image,
+.hero-small-image,
+.about-image-wrap {
+  box-shadow: 0 24px 60px color-mix(in oklab, var(--abr-ink) 10%, transparent);
+}
+
+.primary-button svg {
+  transition: transform 0.2s ease;
+}
+
+.primary-button:hover svg {
+  transform: translateX(3px);
+}
+
+/* Contact — Lucas Lucas-style “Inlichtingen” block */
+.abr-inlichtingen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.75rem 2.5rem;
+  max-width: 36rem;
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
+}
+
+.abr-inlichtingen-label {
+  margin: 0;
+  min-width: 6.5rem;
+  color: #4a6fa5;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.abr-inlichtingen-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.abr-inlichtingen-name {
+  margin: 0;
+  color: #1a3a6b;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.abr-tel-button {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid #6b7280;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #f8f8f8 0%, #dddddd 100%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 65%);
+  color: #1a3a6b;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+
+.abr-tel-button:hover {
+  filter: brightness(0.97);
+}
+
+.abr-mail-at {
+  margin: 0;
+  color: #1a3a6b;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.abr-mail-at.abr-instagram-link {
+  cursor: pointer;
+}
+
+.abr-mail-at .abr-mail-sep {
+  color: #5b8fd4;
+}
+
+.abr-mail-at:hover .abr-mail-local,
+.abr-mail-at:hover .abr-mail-domain,
+.abr-instagram-link:hover .abr-mail-local,
+.abr-instagram-link:hover .abr-mail-domain {
+  text-decoration: underline;
+}
+
+.lightbox-content .lightbox-title {
+  font-family: var(--font-serif);
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.45rem, 4vw, 2rem);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.reveal-delay {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .primary-button svg {
+    transition: none;
+  }
+}

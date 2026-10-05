@@ -1,0 +1,15 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Pretty API routes used by the contact form
+  RewriteRule ^api/challenge/?$ api/challenge.php [L,QSA]
+  RewriteRule ^api/contact/?$ api/contact.php [L,QSA]
+  RewriteRule ^api/zegel/?$ api/zegel.php [L,QSA]
+
+  # Clean sitemap URL
+  RewriteRule ^sitemap/?$ sitemap.php [L,QSA]
+</IfModule>
